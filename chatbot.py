@@ -32,12 +32,12 @@ if user_prompt:
     st.chat_message("user").markdown(user_prompt)
     st.session_state.chat_history.append({"role": "user", "content": user_prompt})
 
-response = llm.invoke(
-    input = [{"role": "system", "content": "You are a helpful chatbot. Be concise and accurate."}, *st.session_state.chat_history]
-)   
+    response = llm.invoke(
+        input = [{"role": "system", "content": "You are a helpful chatbot. Be concise and accurate."}, *st.session_state.chat_history]
+    )   
 
-assistant_response = response.content
-st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
+    assistant_response = response.content
+    st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
 
-with st.chat_message("assistant"):
-    st.markdown(assistant_response)
+    with st.chat_message("assistant"):
+        st.markdown(assistant_response)
